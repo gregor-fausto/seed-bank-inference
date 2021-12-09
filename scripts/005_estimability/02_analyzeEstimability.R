@@ -21,7 +21,7 @@ for(k in 1:2){
   # - Libraries ----
   library(MCMCvis)
   library(tidyverse)
-  source("~/Dropbox/chapter-4/analysis/scripts/005_estimability/01_functionsEstimability.R")
+  source("../scripts/005_estimability/01_functionsEstimability.R")
   
   # - Functions ----
   
@@ -46,7 +46,7 @@ for(k in 1:2){
   # - Extract posteriors ----
   
   # get names of directories
-  tempDirs=list.dirs("~/Dropbox/chapter-4/analysis/outputs/002_statisticalModelFitting/02_estimability",recursive=FALSE)
+  tempDirs=list.dirs("../outputs/002_statisticalModelFitting/02_estimability",recursive=FALSE)
   
   # construct parameter table from file names
   parm.table=data.frame(do.call(rbind,lapply(tempDirs,f)))
@@ -114,7 +114,7 @@ for(k in 1:2){
   
   # - ++Bias ----
   
-  tiff(filename=paste0("~/Dropbox/chapter-4/analysis/products/figures/summary-",focalParam,".tif"),
+  tiff(filename=paste0("../products/figures/summary-",focalParam,".tif"),
        height=3.5,width=6,units="in",res=300,compression="lzw",pointsize=12)
   
   if(focalParam=="p.m"){panelLabs =  c("A.","B.","C.","D.")} else {panelLabs = c("I.", "J.", "K.", "L.")}
@@ -214,7 +214,7 @@ for(k in 1:2){
   # - +Panels for supplement ----
   # - ++Coverage ----
   
-  tiff(filename=paste0("~/Dropbox/chapter-4/analysis/products/figures/summary-",focalParam,"-supplement.tif"),
+  tiff(filename=paste0("../products/figures/summary-",focalParam,"-supplement.tif"),
        height=3.5,width=6,units="in",res=300,compression="lzw",pointsize=12)
   
   if(focalParam=="p.m"){panelLabs =  c("A.","B.","C.","D.")} else {panelLabs = c("I.", "J.", "K.", "L.")}
@@ -304,7 +304,7 @@ for(k in 1:2){
   
   # - Legend ----
   
-  tiff(filename="~/Dropbox/chapter-4/analysis/products/figures/summary-legend.tif",
+  tiff(filename="../products/figures/summary-legend.tif",
        height=3.5,width=6.5,units="in",res=300,compression="lzw",pointsize=12)
   
   par(mfrow=c(1,1))

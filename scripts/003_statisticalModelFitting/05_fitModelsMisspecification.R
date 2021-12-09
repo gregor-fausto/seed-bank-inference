@@ -9,7 +9,7 @@
 library(MCMCvis)
 
 # - Directories ----
-primaryDirectory <- ""
+primaryDirectory <- "../"
 scriptDirectory <- paste0(primaryDirectory,"scripts/003_statisticalModelFitting/")
 outDataDirectory <- paste0(primaryDirectory,"outputs/001_simulateObservations/03_misspecification")
 outPosteriorSamplesDirectory <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting/03_misspecification/")

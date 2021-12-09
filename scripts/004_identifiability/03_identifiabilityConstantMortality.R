@@ -31,12 +31,14 @@ f.extract = function(file=x,params=c("lambda")){
 
 # - Extract posteriors ----
 
+primaryDirectory <- "../"
+
 # - +Seed bag burial experiment ----
 
 params.Np.bags.all = list()
 for(i in 1:3){
   # get filenames
-  fileNamesBags=list.files(paste0("outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpCmCg-",i,"/seedBagBurial/"))
+  fileNamesBags=list.files(paste0(primaryDirectory,"outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpCmCg-",i,"/seedBagBurial/"))
   
   # construct parameter table from file names
   parm.table.full.bags=data.frame(do.call(rbind,lapply(fileNamesBags,f)))
@@ -46,7 +48,7 @@ for(i in 1:3){
   parm.table.bags = parm.table.full.bags[index.bags,]
   
   # list of full file paths
-  fits.Np.bags = paste0("outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpCmCg-",i,"/seedBagBurial/",fileNamesBags[index.bags])
+  fits.Np.bags = paste0(primaryDirectory,"outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpCmCg-",i,"/seedBagBurial/",fileNamesBags[index.bags])
   
   # extract parameters for mortality and germination
   params.Np.bags = lapply(fits.Np.bags,f.extract,params=c("p.m","p.g"))
@@ -59,7 +61,7 @@ for(i in 1:3){
 params.Np.add.all = list()
 for(i in 1:3){
   # get filenames
-  fileNamesAddition=list.files(paste0("outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpCmCg-",i,"/seedAddition/"))
+  fileNamesAddition=list.files(paste0(primaryDirectory,"outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpCmCg-",i,"/seedAddition/"))
   
   # construct parameter table from file names
   parm.table.full.add=data.frame(do.call(rbind,lapply(fileNamesAddition,f)))
@@ -69,7 +71,7 @@ for(i in 1:3){
   parm.table.add = parm.table.full.add[index.add,]
   
   # list of full file paths
-  fits.Np.add = paste0("outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpCmCg-",i,"/seedAddition/",fileNamesAddition[index.add])
+  fits.Np.add = paste0(primaryDirectory,"outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpCmCg-",i,"/seedAddition/",fileNamesAddition[index.add])
   
   # extract parameters for mortality and germination
   params.Np.add = lapply(fits.Np.add,f.extract,params=c("p.m","p.g"))
@@ -92,7 +94,7 @@ pt7 = 7/12
 
 # - ++Mortality ----
 
-tiff(filename=paste0("products/figures/prior-posterior-overlap-constant.tif"),
+tiff(filename=paste0(primaryDirectory,"products/figures/prior-posterior-overlap-constant.tif"),
      height=3,width=6,units="in",res=300,compression="lzw",pointsize=12)
 par(mfrow = c(1,2),
     oma = c(1.5,2.5,0,0) + 0.1,
@@ -216,7 +218,7 @@ dev.off()
 
 # # - +Correlations in joint posterior ----
 
-tiff(filename=paste0("products/figures/identifiability-joint-constant.tif"),
+tiff(filename=paste0(primaryDirectory,"products/figures/identifiability-joint-constant.tif"),
      height=3,width=6,units="in",res=300,compression="lzw",pointsize=12)
 
 par(mfrow=c(2,3),mar=c(1.5,1.5,.5,0),oma=c(1,2,1,0)+.1,mgp=c(3,.45,0))
@@ -273,7 +275,7 @@ dev.off()
 
 # - Legend ----
 
-tiff(filename="products/figures/identifiability-legend.tif",
+tiff(filename=paste0(primaryDirectory,"products/figures/identifiability-legend.tif"),
      height=3.5,width=6.5,units="in",res=300,compression="lzw",pointsize=12)
 
 par(mfrow=c(1,1))

@@ -8,7 +8,7 @@
 set.seed(16)
 
 # - Directories ----
-primaryDirectory <- ""
+primaryDirectory <- "../"
 scriptDirectory <- paste0(primaryDirectory,"scripts/002_simulateObservations/")
 outDataDirectory <- paste0(primaryDirectory,"outputs/001_simulateObservations/01_identifiability/")
 

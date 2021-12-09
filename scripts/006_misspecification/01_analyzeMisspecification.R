@@ -9,7 +9,7 @@
 # - Libraries ----
 library(MCMCvis)
 library(tidyverse)
-source("~/Dropbox/chapter-4/analysis/scripts/005_estimability/01_functionsEstimability.R")
+source("../scripts/005_estimability/01_functionsEstimability.R")
 
 # - Functions ----
 
@@ -36,7 +36,7 @@ focalParam = "p.g"
 # - Extract posteriors ----
 
 # get names of directories
-tempDirs=list.dirs("~/Dropbox/chapter-4/analysis/outputs/002_statisticalModelFitting/03_misspecification",recursive=FALSE)
+tempDirs=list.dirs("../outputs/002_statisticalModelFitting/03_misspecification",recursive=FALSE)
 
 # construct parameter table from file names
 parm.table=data.frame(do.call(rbind,lapply(tempDirs,f)))
@@ -99,7 +99,7 @@ focalParam = "p.m"
 # - Extract posteriors ----
 
 # get names of directories
-tempDirs=list.dirs("~/Dropbox/chapter-4/analysis/outputs/002_statisticalModelFitting/03_misspecification",recursive=FALSE)
+tempDirs=list.dirs("../outputs/002_statisticalModelFitting/03_misspecification",recursive=FALSE)
 
 # construct parameter table from file names
 parm.table=data.frame(do.call(rbind,lapply(tempDirs,f)))
@@ -180,7 +180,7 @@ pt7 = 7/12
 panels.pg <- unique(df[,c("p.m","p.g")])
 panels.pm <- unique(df.pm[,c("p.m","p.g")])
 
-tiff(filename=paste0("~/Dropbox/chapter-4/analysis/products/figures/summary-misspecification.tif"),
+tiff(filename=paste0("../products/figures/summary-misspecification.tif"),
      height=7,width=6,units="in",res=300,compression="lzw",pointsize=12)
 
 panelLabs=c("A.","B.","C.","D.")

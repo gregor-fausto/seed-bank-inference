@@ -8,7 +8,7 @@
 library(MCMCvis)
 
 # - Directories ----
-primaryDirectory <- ""
+primaryDirectory <- "../"
 scriptDirectory <- paste0(primaryDirectory,"scripts/003_statisticalModelFitting/")
 outDataDirectory <- paste0(primaryDirectory,"outputs/001_simulateObservations/01_identifiability/")
 outPosteriorSamplesDirectory <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting/01_identifiability/")
@@ -44,7 +44,7 @@ for(i in 1:3){
   dir.create(paste0(tempDirectory,"/seedBagBurial"))
   dir.create(paste0(tempDirectory,"/seedAddition"))
   
-  tempDirectory <- aste0(outPosteriorSamplesDirectory,"/posteriors-NpVmCg-",i)
+  tempDirectory <- paste0(outPosteriorSamplesDirectory,"/posteriors-NpVmCg-",i)
   dir.create(paste0(tempDirectory,"/seedBagBurial"))
   dir.create(paste0(tempDirectory,"/seedAddition"))
 }
