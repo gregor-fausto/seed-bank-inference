@@ -6,6 +6,8 @@
 
 # - Create output directories ----
 
+setwd("../")
+
 primaryDirectory = ""
 
 dir.create(paste0(primaryDirectory,"outputs"))
