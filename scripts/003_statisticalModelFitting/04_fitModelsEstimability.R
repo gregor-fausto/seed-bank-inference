@@ -8,7 +8,7 @@
 library(MCMCvis)
 
 # - Directories ----
-primaryDirectory <- "~/Dropbox/chapter-4/analysis/"
+primaryDirectory <- ""
 scriptDirectory <- paste0(primaryDirectory,"scripts/003_statisticalModelFitting/")
 outDataDirectory <- paste0(primaryDirectory,"outputs/001_simulateObservations/02_estimability")
 outPosteriorSamplesDirectory <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting/02_estimability/")

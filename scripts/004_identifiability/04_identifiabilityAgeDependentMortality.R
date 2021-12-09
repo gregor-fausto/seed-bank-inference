@@ -37,7 +37,7 @@ f.extract = function(file=x,params=c("lambda")){
 params.Np.bags.all = list()
 for(i in 1:3){
   # get filenames
-  fileNamesBags=list.files(paste0("~/Dropbox/chapter-4/analysis/outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpVmCg-",i,"/seedBagBurial/"))
+  fileNamesBags=list.files(paste0("outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpVmCg-",i,"/seedBagBurial/"))
   
   # construct parameter table from file names
   parm.table.full.bags=data.frame(do.call(rbind,lapply(fileNamesBags,f)))
@@ -47,7 +47,7 @@ for(i in 1:3){
   parm.table.bags = parm.table.full.bags[index.bags,]
   
   # list of full file paths
-  fits.Np.bags = paste0("~/Dropbox/chapter-4/analysis/outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpVmCg-",i,"/seedBagBurial/",fileNamesBags[index.bags])
+  fits.Np.bags = paste0("outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpVmCg-",i,"/seedBagBurial/",fileNamesBags[index.bags])
   
   # extract parameters for mortality and germination
   params.Np.bags = lapply(fits.Np.bags,f.extract,params=c("p.m","p.g"))
@@ -60,7 +60,7 @@ for(i in 1:3){
 params.Np.add.all = list()
 for(i in 1:3){
   # get filenames
-  fileNamesAddition=list.files(paste0("~/Dropbox/chapter-4/analysis/outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpVmCg-",i,"/seedAddition/"))
+  fileNamesAddition=list.files(paste0("outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpVmCg-",i,"/seedAddition/"))
   
   # construct parameter table from file names
   parm.table.full.add=data.frame(do.call(rbind,lapply(fileNamesAddition,f)))
@@ -70,7 +70,7 @@ for(i in 1:3){
   parm.table.add = parm.table.full.add[index.add,]
   
   # list of full file paths
-  fits.Np.add = paste0("~/Dropbox/chapter-4/analysis/outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpVmCg-",i,"/seedAddition/",fileNamesAddition[index.add])
+  fits.Np.add = paste0("outputs/002_statisticalModelFitting/01_identifiability/posteriors-NpVmCg-",i,"/seedAddition/",fileNamesAddition[index.add])
   
   # extract parameters for mortality and germination
   params.Np.add = lapply(fits.Np.add,f.extract,params=c("p.m","p.g"))
@@ -93,7 +93,7 @@ pt6 = 6/12
 
 # - ++Mortality ----
 
-tiff(filename=paste0("~/Dropbox/chapter-4/analysis/products/figures/prior-posterior-overlap-variable-mortality.tif"),
+tiff(filename=paste0("products/figures/prior-posterior-overlap-variable-mortality.tif"),
      height=3,width=6,units="in",res=300,compression="lzw",pointsize=12)
 
 f.pp = function(index=1){
@@ -239,7 +239,7 @@ dev.off()
 # - +Correlations in joint posterior ----
 
 
-tiff(filename=paste0("~/Dropbox/chapter-4/analysis/products/figures/identifiability-joint-variable-1.tif"),
+tiff(filename=paste0("products/figures/identifiability-joint-variable-1.tif"),
      height=3,width=2,units="in",res=300,compression="lzw",pointsize=12)
 
 par(mfrow=c(2,1),mar=c(.25,.25,.6,0),oma=c(1,2.5,.5,.25)+.1,mgp=c(3,.45,0))
@@ -280,7 +280,7 @@ box()
 
 dev.off()
 
-tiff(filename=paste0("~/Dropbox/chapter-4/analysis/products/figures/identifiability-joint-variable-2.tif"),
+tiff(filename=paste0("products/figures/identifiability-joint-variable-2.tif"),
      height=3,width=2,units="in",res=300,compression="lzw",pointsize=12)
 
 # age 2
@@ -351,7 +351,7 @@ mtext( expression(p[g] ), side=1, line = 0.5, cex =pt10,adj=0.5,outer=FALSE)
 dev.off()
 
 
-tiff(filename=paste0("~/Dropbox/chapter-4/analysis/products/figures/identifiability-joint-variable-3.tif"),
+tiff(filename=paste0("products/figures/identifiability-joint-variable-3.tif"),
      height=3,width=2,units="in",res=300,compression="lzw",pointsize=12)
 # age 3
 

@@ -4,6 +4,22 @@
 ####
 ####
 
+# - Create output directories ----
+
+dir.create(paste0("outputs/001_simulateObservations"))
+tmp <- paste0("outputs/001_simulateObservations")
+
+dir.create(paste0(tmp,"/01_identifiability"))
+dir.create(paste0(tmp,"/02_estimability"))
+dir.create(paste0(tmp,"/03_misspecification"))
+
+dir.create(paste0("outputs/002_statisticalModelFitting"))
+tmp <- paste0("outputs/002_statisticalModelFitting")
+
+dir.create(paste0(tmp,"/01_identifiability"))
+dir.create(paste0(tmp,"/02_estimability"))
+dir.create(paste0(tmp,"/03_misspecification"))
+
 # - Simulate observations ----
 
 source("002_simulateObservations/01_simulateSeedBurialIdentifiability.R")
