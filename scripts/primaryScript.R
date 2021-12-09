@@ -4,6 +4,13 @@
 ####
 ####
 
+# - Required packages ----
+
+# tidyverse
+# binom
+# MCMCvis
+# rjags
+
 # - Create output directories ----
 
 setwd("../")
@@ -24,6 +31,9 @@ tmp <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting")
 dir.create(paste0(tmp,"/01_identifiability"))
 dir.create(paste0(tmp,"/02_estimability"))
 dir.create(paste0(tmp,"/03_misspecification"))
+
+dir.create(paste0(primaryDirectory,"products"))
+dir.create(paste0(primaryDirectory,"products/figures"))
 
 # - Simulate observations ----
 

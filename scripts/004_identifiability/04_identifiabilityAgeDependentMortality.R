@@ -32,7 +32,7 @@ f.extract = function(file=x,params=c("lambda")){
 
 # - Extract posteriors ----
 
-primaryDirectory <- "../"
+primaryDirectory <- ""
 
 # - +Seed bag burial experiment ----
 

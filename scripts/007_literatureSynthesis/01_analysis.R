@@ -9,7 +9,7 @@ library(tidyverse)
 
 # - Read data ----
 # table of literature survey
-df <- read.csv("../data/01_literatureSynthesis/table-literature-survey.csv",header=TRUE)
+df <- read.csv("data/01_literatureSynthesis/table-literature-survey.csv",header=TRUE)
 
 # - Exploratory plots ----
 # - + Seed bag data ----
@@ -98,7 +98,7 @@ par(oma = c(2.5,4,0,0) + 0.1,
 # - +Panel A ----
 # plots describing publication data
 
-pdf("../products/figures/figure-meta-1.pdf",width=6,height=6)
+pdf("products/figures/figure-meta-1.pdf",width=6,height=6)
 
 par(mfrow=c(1,1))
 plot(NA,xlim=c(1990,2021),
@@ -123,7 +123,7 @@ dfSummary=df %>%
 dfBag = dfSummary[dfSummary$experiment=="seed bag burial",] %>% ungroup
 dfAddition = dfSummary[dfSummary$experiment=="seed addition",] %>% ungroup
 
-pdf("../products/figures/figure-meta-2.pdf",width=6,height=6)
+pdf("products/figures/figure-meta-2.pdf",width=6,height=6)
 
 # - +Panel B ----
 #  plots describing publication data
@@ -145,7 +145,7 @@ dfAddition = df[df$experiment=="seed addition",]
 # - +Panel C ----
 #  summarize experiments by length vs. # observations
 
-pdf("../products/figures/figure-meta-3.pdf",width=6,height=6)
+pdf("products/figures/figure-meta-3.pdf",width=6,height=6)
 
 par(mfcol=c(1,1))
 plot(dfBag$totalMonths,dfBag$observationNumber,
@@ -160,7 +160,7 @@ dev.off()
 
 # - +Panel D ----
 #  summarize by sample size vs # observations
-pdf("../products/figures/figure-meta-4.pdf",width=6,height=6)
+pdf("products/figures/figure-meta-4.pdf",width=6,height=6)
 
 par(mfcol=c(1,1))
 plot(dfBag$repNumber*dfBag$seedNumber,dfBag$observationNumber,

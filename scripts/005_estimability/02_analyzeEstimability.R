@@ -21,16 +21,16 @@ for(k in 1:2){
   # - Libraries ----
   library(MCMCvis)
   library(tidyverse)
-  source("../scripts/005_estimability/01_functionsEstimability.R")
+  source("scripts/005_estimability/01_functionsEstimability.R")
   
   # - Functions ----
   
   # - +Generate table of parameters from simulation filenames ----
   f = function(x){
     tmp=strsplit(x,"-")[[1]]
-    n.bags=as.numeric(tmp[3])
-    p.m=as.numeric(tmp[4])
-    p.g=as.numeric(sub(".RDS","",tmp[5]))
+    n.bags=as.numeric(tmp[2])
+    p.m=as.numeric(tmp[3])
+    p.g=as.numeric(sub(".RDS","",tmp[4]))
     obj=c(n.bags=n.bags,p.m=p.m,p.g=p.g)
     return(obj)
   }
@@ -46,7 +46,7 @@ for(k in 1:2){
   # - Extract posteriors ----
   
   # get names of directories
-  tempDirs=list.dirs("../outputs/002_statisticalModelFitting/02_estimability",recursive=FALSE)
+  tempDirs=list.dirs("outputs/002_statisticalModelFitting/02_estimability",recursive=FALSE)
   
   # construct parameter table from file names
   parm.table=data.frame(do.call(rbind,lapply(tempDirs,f)))
@@ -75,7 +75,7 @@ for(k in 1:2){
     fitsAddition = paste0(paste0(tmp,"/posteriors-NpCmCg/seedAddition/",fileNamesAddition))
     
     # if directory is empty (no files), go to next one
-    if(length(fitsBags)<11) next
+    if(length(fitsBags)<1) next
     
     # extract posteriors for mortality and germination
     posterior.bags.all = lapply(fitsBags,f.extract,params=c("p.m","p.g"))
@@ -114,7 +114,7 @@ for(k in 1:2){
   
   # - ++Bias ----
   
-  tiff(filename=paste0("../products/figures/summary-",focalParam,".tif"),
+  tiff(filename=paste0("products/figures/summary-",focalParam,".tif"),
        height=3.5,width=6,units="in",res=300,compression="lzw",pointsize=12)
   
   if(focalParam=="p.m"){panelLabs =  c("A.","B.","C.","D.")} else {panelLabs = c("I.", "J.", "K.", "L.")}
@@ -214,7 +214,7 @@ for(k in 1:2){
   # - +Panels for supplement ----
   # - ++Coverage ----
   
-  tiff(filename=paste0("../products/figures/summary-",focalParam,"-supplement.tif"),
+  tiff(filename=paste0("products/figures/summary-",focalParam,"-supplement.tif"),
        height=3.5,width=6,units="in",res=300,compression="lzw",pointsize=12)
   
   if(focalParam=="p.m"){panelLabs =  c("A.","B.","C.","D.")} else {panelLabs = c("I.", "J.", "K.", "L.")}
@@ -304,7 +304,7 @@ for(k in 1:2){
   
   # - Legend ----
   
-  tiff(filename="../products/figures/summary-legend.tif",
+  tiff(filename="products/figures/summary-legend.tif",
        height=3.5,width=6.5,units="in",res=300,compression="lzw",pointsize=12)
   
   par(mfrow=c(1,1))

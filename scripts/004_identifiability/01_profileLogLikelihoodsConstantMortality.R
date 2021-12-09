@@ -10,7 +10,7 @@
 library(MCMCvis)
 
 # - Directories ----
-primaryDirectory <- "../"
+primaryDirectory <- ""
 outDataDirectory <- paste0(primaryDirectory,"outputs/001_simulateObservations/01_identifiability/")
 outPosteriorSamplesDirectory <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting/01_identifiability/")
 
@@ -207,7 +207,7 @@ data = data.frame(data)
 panelLabs =  c("A.","B.","C.","D.","E.","F.")
 
 
-tiff(filename=paste0("../products/figures/identifiability-joint-constant-likelihood.tif"),
+tiff(filename=paste0("products/figures/identifiability-joint-constant-likelihood.tif"),
      height=3,width=6,units="in",res=300,compression="lzw",pointsize=12)
 
 par(mfrow=c(2,3),mar=c(1.5,1.5,1,.5),oma=c(1,2,1,0)+.1,mgp=c(3,.45,0))
