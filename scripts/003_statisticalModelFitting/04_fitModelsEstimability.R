@@ -17,9 +17,9 @@ outPosteriorSamplesDirectory <- paste0(primaryDirectory,"outputs/002_statistical
 # - +Generate table of parameters from simulation filenames ----
 f = function(x){
   tmp=strsplit(x,"-")[[1]]
-  n.bags=as.numeric(tmp[3])
-  p.m=as.numeric(tmp[4])
-  p.g=as.numeric(sub(".RDS","",tmp[5]))
+  n.bags=as.numeric(tmp[2])
+  p.m=as.numeric(tmp[3])
+  p.g=as.numeric(sub(".RDS","",tmp[4]))
   obj=c(n.bags=n.bags,p.m=p.m,p.g=p.g)
   return(obj)
 }
@@ -59,7 +59,7 @@ simulatedData = paste0("replicate-",1:n.replicate,".RDS")
 # fit non-parametric seed bag burial and seed addition experiments
 for(i in 1:length(index)){
 
-  simulatedDataObj <- strsplit(fileNames[index[i]],"/")[[1]][10]
+  simulatedDataObj <- strsplit(fileNames[index[i]],"/")[[1]][4]
 
   tmpPosteriorDirectory <- paste0(outPosteriorSamplesDirectory,simulatedDataObj,"/")
 

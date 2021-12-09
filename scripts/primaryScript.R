@@ -6,16 +6,18 @@
 
 # - Create output directories ----
 
-dir.create("../outputs")
-dir.create("../outputs/001_simulateObservations")
-tmp <- "../outputs/001_simulateObservations"
+primaryDirectory = ""
+
+dir.create(paste0(primaryDirectory,"outputs"))
+dir.create(paste0(primaryDirectory,"outputs/001_simulateObservations"))
+tmp <- paste0(primaryDirectory,"outputs/001_simulateObservations")
 
 dir.create(paste0(tmp,"/01_identifiability"))
 dir.create(paste0(tmp,"/02_estimability"))
 dir.create(paste0(tmp,"/03_misspecification"))
 
-dir.create("../outputs/002_statisticalModelFitting")
-tmp <- "../outputs/002_statisticalModelFitting"
+dir.create(paste0(primaryDirectory,"outputs/002_statisticalModelFitting"))
+tmp <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting")
 
 dir.create(paste0(tmp,"/01_identifiability"))
 dir.create(paste0(tmp,"/02_estimability"))
