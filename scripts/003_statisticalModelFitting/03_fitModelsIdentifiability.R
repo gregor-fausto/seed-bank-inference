@@ -40,11 +40,11 @@ for(i in 1:3){
   dir.create(paste0(outPosteriorSamplesDirectory,"/posteriors-NpCmCg-",i))
   dir.create(paste0(outPosteriorSamplesDirectory,"/posteriors-NpVmCg-",i))
   
-  tempDirectory <- paste0(tempDirectory,"/posteriors-NpCmCg-i")
+  tempDirectory <- paste0(outPosteriorSamplesDirectory,"/posteriors-NpCmCg-",i)
   dir.create(paste0(tempDirectory,"/seedBagBurial"))
   dir.create(paste0(tempDirectory,"/seedAddition"))
   
-  tempDirectory <- paste0(tempDirectory,"/posteriors-NpVmCg-i")
+  tempDirectory <- aste0(outPosteriorSamplesDirectory,"/posteriors-NpVmCg-",i)
   dir.create(paste0(tempDirectory,"/seedBagBurial"))
   dir.create(paste0(tempDirectory,"/seedAddition"))
 }
