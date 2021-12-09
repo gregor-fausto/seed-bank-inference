@@ -34,8 +34,7 @@ n  <-  length(fileNames)
 parameterTable <- data.frame(do.call(rbind,lapply(fileNames,f)))
 
 # - +Subset parameters ----
-parametersIdentifiability <- parameterTable$p.m==.1 & parameterTable$p.g==0.1 & parameterTable$n.bags %in% c(100);
-index = (1:n)[parametersIdentifiability]
+index = (1:n)
 
 # - Fetch data ----
 
@@ -227,7 +226,7 @@ pt6 = 6/12
 
 panelLabs =  c("G.","H.","I.","J.","K.","L.")
 
-tiff(filename=paste0("~/Dropbox/chapter-4/analysis/products/figures/identifiability-joint-variable-likelihood.tif"),
+tiff(filename=paste0("../products/figures/identifiability-joint-variable-likelihood.tif"),
      height=3,width=6,units="in",res=300,compression="lzw",pointsize=12)
 
 par(mfrow=c(2,3),mar=c(1.5,1.5,1,.5),oma=c(1,2,0,0)+.1,mgp=c(3,.45,0))

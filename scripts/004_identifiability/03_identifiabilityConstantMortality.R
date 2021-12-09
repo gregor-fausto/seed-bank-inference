@@ -44,7 +44,7 @@ for(i in 1:3){
   parm.table.full.bags=data.frame(do.call(rbind,lapply(fileNamesBags,f)))
   
   # subset parameter table
-  index.bags=parm.table.full.bags$p.m==0.1 & parm.table.full.bags$p.g==0.1 & parm.table.full.bags$n.bags==100
+  index.bags=parm.table.full.bags$p.m==0.1 & parm.table.full.bags$p.g==0.1 
   parm.table.bags = parm.table.full.bags[index.bags,]
   
   # list of full file paths
@@ -67,7 +67,7 @@ for(i in 1:3){
   parm.table.full.add=data.frame(do.call(rbind,lapply(fileNamesAddition,f)))
   
   # subset parameter table
-  index.add=parm.table.full.add$p.m==0.1 & parm.table.full.add$p.g==0.1 & parm.table.full.add$n.bags==100
+  index.add=parm.table.full.add$p.m==0.1 & parm.table.full.add$p.g==0.1
   parm.table.add = parm.table.full.add[index.add,]
   
   # list of full file paths

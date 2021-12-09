@@ -45,7 +45,7 @@ for(i in 1:3){
   parm.table.full.bags=data.frame(do.call(rbind,lapply(fileNamesBags,f)))
   
   # subset parameter table
-  index.bags=parm.table.full.bags$p.m==0.1 & parm.table.full.bags$p.g==0.1 & parm.table.full.bags$n.bags == 100
+  index.bags=parm.table.full.bags$p.m==0.1 & parm.table.full.bags$p.g==0.1
   parm.table.bags = parm.table.full.bags[index.bags,]
   
   # list of full file paths
@@ -68,7 +68,7 @@ for(i in 1:3){
   parm.table.full.add=data.frame(do.call(rbind,lapply(fileNamesAddition,f)))
   
   # subset parameter table
-  index.add=parm.table.full.add$p.m==0.1 & parm.table.full.add$p.g==0.1 & parm.table.full.bags$n.bags == 100
+  index.add=parm.table.full.add$p.m==0.1 & parm.table.full.add$p.g==0.1
   parm.table.add = parm.table.full.add[index.add,]
   
   # list of full file paths
@@ -179,12 +179,12 @@ for(i in 1:3){
     prior = rbeta(1500,1,1)
     
     # seed bags: mortality
-    post = params.Np.bags.all[[i]][[j]][,6]
+    post = params.Np.bags.all[[i]][[j]][,4]
     pp <- list(prior, post)
     pp.bags[j,i]<-overlapping::overlap(pp)$OV[[1]]
     
     # seed addition: mortality
-    post = params.Np.add.all[[i]][[j]][,6]
+    post = params.Np.add.all[[i]][[j]][,4]
     pp <- list(prior, post)
     pp.add[j,i]<-overlapping::overlap(pp)$OV[[1]]
   }
@@ -248,7 +248,7 @@ par(mfrow=c(2,1),mar=c(.25,.25,.6,0),oma=c(1,2.5,.5,.25)+.1,mgp=c(3,.45,0))
 
 i=1
 # seed bags: mortality
-post.bags = params.Np.bags.all[[i]][[1]][,c(1:i,6)]
+post.bags = params.Np.bags.all[[i]][[1]][,c(1:i,4)]
 
 plot(post.bags[,2],post.bags[,1],pch=16,ylab="",xlab="",cex=.5,
      xlim=c(.097,.105),ylim=c(.097,.105),tick=TRUE,
@@ -265,7 +265,7 @@ mtext(adj=0,"G.",cex=pt10,outer=FALSE)
 box()
 
 # seed addition: mortality
-post.add = params.Np.add.all[[i]][[1]][,c(1:i,6)]
+post.add = params.Np.add.all[[i]][[1]][,c(1:i,4)]
 
 plot(post.add[,2],post.add[,1],pch=21,cex=.5,xlab="",ylab="",
      xlim=c(0.1,1),ylim=c(.1,1),tick=TRUE,
@@ -292,7 +292,7 @@ par(mfrow=c(4,2),mar=c(.25,.25,0,0),oma=c(1,1.75,.8,0)+.1,mgp=c(3,.45,0))
 
 i=2
 # seed bags: mortality
-post.bags = params.Np.bags.all[[i]][[1]][,c(1:i,6)]
+post.bags = params.Np.bags.all[[i]][[1]][,c(1:i,4)]
 
 plot(post.bags[,2],post.bags[,1],pch=16,cex=.4,ylab="",xlab="",
      xlim=c(.092,.106),ylim=c(.092,.106),
@@ -323,7 +323,7 @@ mtext( expression(p[m2] ), side=2, line = 1.25, cex =pt10,adj=0.5,outer=FALSE)
 mtext(outer=TRUE,"2 years of observations",side=3, cex = pt8)
 
 # seed addition: mortality
-post.add = params.Np.add.all[[i]][[1]][,c(1:i,6)]
+post.add = params.Np.add.all[[i]][[1]][,c(1:i,4)]
 
 plot(post.add[,2],post.add[,1],pch=21,cex=.4,ylab="",xlab="",
      xlim=c(0,.6),ylim=c(0,.6),
@@ -361,7 +361,7 @@ par(mfrow=c(6,3),mar=c(.25,.25,.25,0),oma=c(1,1.75,.8,0)+.1,mgp=c(3,.45,0))
 
 i=3
 # seed bags: mortality
-post.bags = params.Np.bags.all[[i]][[1]][,c(1:i,6)]
+post.bags = params.Np.bags.all[[i]][[1]][,c(1:i,4)]
 
 row1= c(.09,.115)
 
@@ -419,7 +419,7 @@ axis(2,cex.axis=pt6,tick=TRUE,outer=FALSE,at=seq(.09,.12,by=.01))
 mtext( expression(p[m3] ), side=2, line = 1, cex =pt10,adj=0.5,outer=FALSE)
 
 # seed addition: mortality
-post.add = params.Np.add.all[[i]][[1]][,c(1:i,6)]
+post.add = params.Np.add.all[[i]][[1]][,c(1:i,4)]
 
 row1=c(0,.55)
 
