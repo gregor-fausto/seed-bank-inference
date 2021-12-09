@@ -54,7 +54,7 @@ identifiabilityBinary = FALSE
 # - +number of replicate simulations ----
 n.replicate = 10
 
-simulatedData = paste0("replicate-",1:replicate,".RDS")
+simulatedData = paste0("replicate-",1:n.replicate,".RDS")
 
 # fit non-parametric seed bag burial and seed addition experiments
 for(i in 1:length(index)){

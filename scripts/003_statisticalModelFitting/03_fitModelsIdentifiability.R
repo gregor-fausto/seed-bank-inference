@@ -32,8 +32,7 @@ n  <-  length(fileNames)
 parameterTable <- data.frame(do.call(rbind,lapply(fileNames,f)))
 
 # - +Subset parameters ----
-parametersIdentifiability <- parameterTable$p.m==.1 & parameterTable$p.g==0.1 & parameterTable$n.bags %in% c(100);
-index = (1:n)[parametersIdentifiability]
+index = (1:n)
 
 # - Create directory ----
 for(i in 1:3){
