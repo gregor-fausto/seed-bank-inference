@@ -1,0 +1,76 @@
+#####
+#####
+# Study parameter identifiability in non-parametric models#
+#####
+#####
+#
+# - Libraries ----#
+library(MCMCvis)#
+#
+# - Directories ----#
+primaryDirectory <- "~/Dropbox/chapter-4/analysis/"#
+scriptDirectory <- paste0(primaryDirectory,"scripts/002_statisticalModelFitting/")#
+outDataDirectory <- paste0(primaryDirectory,"outputs/001_simulateObservations/02_practical")#
+outPosteriorSamplesDirectory <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting/02_practical/")#
+#
+# - Functions ----#
+# - +Generate table of parameters from simulation filenames ----#
+f = function(x){#
+  tmp=strsplit(x,"-")[[1]]#
+  alpha=as.numeric(strsplit(tmp[2],"/")[[1]][6])#
+  n.bags=as.numeric(tmp[3])#
+  p.m=as.numeric(tmp[4])#
+  p.g=as.numeric(sub(".RDS","",tmp[5]))#
+  obj=c(alpha=alpha,n.bags=n.bags,p.m=p.m,p.g=p.g)#
+  return(obj)#
+}#
+#
+# - Parameters for identifiability analysis ----#
+# - Run models ----#
+#
+fileNames <- list.dirs(paste0(outDataDirectory),recursive=FALSE)#
+n  <-  length(fileNames)#
+parameterTable <- data.frame(do.call(rbind,lapply(fileNames,f)))
+parameterTable
+parametersIdentifiability
+parametersIdentifiability <- parameterTable$alpha==1 & paramaterTable$n.bags<11
+#####
+#####
+# Study parameter identifiability in non-parametric models#
+#####
+#####
+#
+# - Libraries ----#
+library(MCMCvis)#
+#
+# - Directories ----#
+primaryDirectory <- "~/Dropbox/chapter-4/analysis/"#
+scriptDirectory <- paste0(primaryDirectory,"scripts/002_statisticalModelFitting/")#
+outDataDirectory <- paste0(primaryDirectory,"outputs/001_simulateObservations/02_practical")#
+outPosteriorSamplesDirectory <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting/02_practical/")#
+#
+# - Functions ----#
+# - +Generate table of parameters from simulation filenames ----#
+f = function(x){#
+  tmp=strsplit(x,"-")[[1]]#
+  alpha=as.numeric(strsplit(tmp[2],"/")[[1]][6])#
+  n.bags=as.numeric(tmp[3])#
+  p.m=as.numeric(tmp[4])#
+  p.g=as.numeric(sub(".RDS","",tmp[5]))#
+  obj=c(alpha=alpha,n.bags=n.bags,p.m=p.m,p.g=p.g)#
+  return(obj)#
+}#
+#
+# - Parameters for identifiability analysis ----#
+# - Run models ----#
+#
+fileNames <- list.dirs(paste0(outDataDirectory),recursive=FALSE)#
+n  <-  length(fileNames)#
+parameterTable <- data.frame(do.call(rbind,lapply(fileNames,f)))#
+#
+# filter parameter table#
+parametersIdentifiability <- parameterTable$alpha==1 & paramaterTable$n.bags<11
+parametersIdentifiability <- parameterTable$alpha==1 & parameterTable$n.bags<11
+index = (1:n)[parametersIdentifiability]
+index
+R

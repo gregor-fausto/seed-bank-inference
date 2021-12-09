@@ -1,0 +1,23 @@
+# Identifiability
+
+Identifiability was analyzed with the computer algebra system, Maxima, run from the wxMaxima interface.
+
+## Installation
+
+Maxima is a computer algebra system available at: https://maxima.sourceforge.io/
+
+wxMaxima is a user interface to Maxima availabe at: https://wxmaxima-developers.github.io/wxmaxima/index.html
+
+## Usage
+
+Exhaustive summaries for all models are contained in the folder '01_exhaustiveSummary'. Each model is summarized in an individual text file that can be read by Maxima.
+
+Scripts to analyze and summarize each model are in the folder '02_scripts'. Output is saved in the folder '03_output'
+
+To analyze the identifiability of an individual model in Maxima, read in a model and run the file 'scriptDeficiencyAnalysis'. 'scriptDeficiencyAnalysis' calculates the deficiency of the derivative matrix, and writes the deficiency to a text file.
+
+To analyze the identifiability of all models in Maxima, run the file 'scriptFullAnalysis'. 'scriptFullAnalysis' reads in all the files containing exhaustive summaries of models, and applies the script in 'scriptDeficiencyAnalysis' to each.
+
+## Summary
+
+To organize the results of the identifiability analysis, run 'organizeAnalysis.R'. This will output a data frame in R.

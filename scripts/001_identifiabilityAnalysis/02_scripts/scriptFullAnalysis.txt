@@ -1,0 +1,25 @@
+/* Script for identifiability analysis of non-parametric models */
+
+/* Seed addition experiments */
+/* read files containing exhaustive summary of models */
+files: directory("~/Dropbox/chapter-4/symbolicMethod/001_identifiabilityAnalysis/01_exhaustiveSummary/seedAddition/*");
+n: length(files);
+
+/* for-loop to apply analysis to each file */
+/* the analysis resets the variables at the end of each model */
+for i:1 while i<=n do (
+      batch(files[i]),
+      batch("~/Dropbox/chapter-4/symbolicMethod/001_identifiabilityAnalysis/02_scripts/scriptDeficiencyAnalysis")
+    ) ;
+
+/* Seed bag burial experiments */
+/* read files containing exhaustive summary of models */
+files: directory("~/Dropbox/chapter-4/symbolicMethod/001_identifiabilityAnalysis/01_exhaustiveSummary/seedBagBurial/*");
+n: length(files);
+
+/* for-loop to apply analysis to each file */
+/* the analysis resets the variables at the end of each model */
+for i:1 while i<=n do (
+      batch(files[i]),
+      batch("~/Dropbox/chapter-4/symbolicMethod/001_identifiabilityAnalysis/02_scripts/scriptDeficiencyAnalysis")
+    ) ;

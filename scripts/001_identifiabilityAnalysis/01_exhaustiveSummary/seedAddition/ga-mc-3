@@ -1,0 +1,15 @@
+/* Seed addition experiment: 3 years of observations */
+/* constant mortality */
+/* age-dependent germination */
+
+/* kappaL stores the exhaustive summary of the likelihood component of the model */
+kappaL: [g1*(1-m),g2*(1-g1)*(1-m)*(1-m),g3*(1-g2)*(1-g1)*(1-m)*(1-m)*(1-m)];
+
+/* kappaP stores the exhaustive summary of the prior component of the model */
+kappaP: [1,1,1,1];
+
+/* kappa stores the exhaustive summary of the posterior of the model */
+kappa: append(kappaL,kappaP);
+
+/* pars stores the parameters in the model */
+pars: [g1,g2,g3,m];

@@ -1,0 +1,21 @@
+/* Seed bag burial experiment: 1 year of observations */
+/* constant mortality */
+/* constant germination */
+
+/* kappaL_1 stores the exhaustive summary of the likelihood component of the survival model */
+kappaL1: [(1-m)];
+
+/* kappaL_2 stores the exhaustive summary of the likelihood component of the germination model */
+kappaL2: [g];
+
+/* kappaL stores the combined exhaustive summary */
+kappaL: append(kappaL1,kappaL2);
+
+/* kappaP stores the exhaustive summary of the prior component of the model */
+kappaP: [1,1];
+
+/* kappa stores the exhaustive summary of the posterior of the model */
+kappa: append(kappaL,kappaP);
+
+/* pars stores the parameters in the model */
+pars: [g,m];
