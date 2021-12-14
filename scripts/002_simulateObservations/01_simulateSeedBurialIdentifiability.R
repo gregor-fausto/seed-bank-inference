@@ -24,7 +24,7 @@ p.m <- 0.1
 n.start <- 100
 
 # - +Number of bags/plots ----
-n.bags <- 1000
+n.bags <- 100
 
 # - Build table ----
 parameterTable <- expand.grid(p.g=p.g,p.m=p.m,n.start=n.start,n.bags=n.bags)
