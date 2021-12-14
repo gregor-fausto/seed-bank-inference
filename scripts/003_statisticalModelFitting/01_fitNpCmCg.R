@@ -2,9 +2,15 @@
 # Simulation
 # -------------------------------------------------------------------
 
-data <- simulation.data[[2]]
-parms <- simulation.data[[1]]
-t.max <- max(parms$t)
+if(identifiabilityBinary == TRUE){ 
+  # keep data read in file for model fitting
+} else if(identifiabilityBinary == FALSE){
+  # read in data
+  data <- simulation.data[[2]]
+  parms <- simulation.data[[1]]
+  t.max <- max(parms$t)
+}
+
 
 # -------------------------------------------------------------------
 # Set JAGS parameters and random seed
