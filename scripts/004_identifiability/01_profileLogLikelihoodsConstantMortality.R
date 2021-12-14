@@ -25,10 +25,10 @@ matrix.image=function(A, x=NULL, y=NULL, col=rainbow(100,start=0.67,end=0),
   y1=c(1.5*y[1]-0.5*y[2],1.5*y[ny]-0.5*y[ny-1]); 
   if(bw) col=grey( (200:0)/200 ); 
   # comment out this line to reverse the direction of the plot
-  image(list(x=x,y=y,z=A),xlim=x1,ylim=(y1),col=col,cex.axis=pt8,cex.lab=pt8,bty="u",...);
+  image(list(x=x,y=y,z=(A)),xlim=x1,ylim=(y1),col=col,cex.axis=pt8,cex.lab=pt8,bty="u",...);
   abline(v=range(x1)); abline(h=range(y1)); 
-  if(do.contour) contour(x,y,A,nlevels=nl,labcex=pt6,add=TRUE);   
-  contour(x,y,A,levels=extraLevel,labcex=pt6,add=TRUE);
+  if(do.contour) contour(x,y,(A),nlevels=nl,labcex=pt6,add=TRUE);   
+  contour(x,y,(A),levels=extraLevel,labcex=pt6,add=TRUE);
 }
 
 # set font sizes
@@ -141,7 +141,7 @@ likSeedBagCC1 = function(parms, dat){
   
   index=(1:length(t))[t==1]
   prob = (1-p.m)
-  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob,log=TRUE))
   return(tmp)
 }
 
@@ -156,11 +156,11 @@ likSeedBagCC2 = function(parms, dat){
   
   index=(1:length(t))[t==1]
   prob = (1-p.m)
-  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob,log=TRUE))
   
   index=(1:length(t))[t==2]
   prob = (1-p.m)*(1-p.g)*(1-p.m)
-  tmp2 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp2 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob,log=TRUE))
   
   tmp = tmp+tmp2
   return(tmp)
@@ -178,15 +178,15 @@ likSeedBagCC3 = function(parms, dat){
   
   index=(1:length(t))[t==1]
   prob = (1-p.m)
-  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob,log=TRUE))
   
   index=(1:length(t))[t==2]
   prob = (1-p.m)*(1-p.g)*(1-p.m)
-  tmp2 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp2 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob,log=TRUE))
   
   index=(1:length(t))[t==3]
   prob = (1-p.m)*(1-p.g)*(1-p.m)*(1-p.g)*(1-p.m)
-  tmp3 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp3 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob,log=TRUE))
   
   tmp = tmp+tmp2+tmp3
   return(tmp)
@@ -206,7 +206,7 @@ data = data.frame(data)
 # - +Seed bag burial experiment ----
 panelLabs =  c("A.","B.","C.","D.","E.","F.")
 
-
+# 
 tiff(filename=paste0("products/figures/identifiability-joint-constant-likelihood.tif"),
      height=3,width=6,units="in",res=300,compression="lzw",pointsize=12)
 
@@ -214,17 +214,18 @@ par(mfrow=c(2,3),mar=c(1.5,1.5,1,.5),oma=c(1,2,1,0)+.1,mgp=c(3,.45,0))
 
 # - ++1 year ----
 
-x = y = seq(0.08,.12,by=0.0001)
+x = y = seq(0.001,.5,length.out=100)
 
-resmat = matrix(nrow=length(x),ncol=length(y))
+resmat  = matrix(nrow=length(x),ncol=length(y))
 
 for(i in 1:length(x)){
   for(j in 1:length(y)){
-    resmat[i,j] = likSeedBagCC1(parms=c(x[i],y[j]),dat=data)
+    resmat[j,i] = likSeedBagCC1(parms=c(x[j],y[i]),dat=data)
   }
 }
 
-matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 8,extraLevel = c(360,370))
+
+matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 8,extraLevel = c(600))
 points(.1,.1,pch=4,cex=2)
 
 mtext(expression(p[m]),side=2,line=1.25,cex=pt9);
@@ -239,11 +240,11 @@ resmat = matrix(nrow=length(x),ncol=length(y))
 
 for(i in 1:length(x)){
   for(j in 1:length(y)){
-    resmat[i,j] = likSeedBagCC2(parms=c(x[i],y[j]),dat=data)
+    resmat[j,i] = likSeedBagCC2(parms=c(x[j],y[i]),dat=data)
   }
 }
 
-matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 6,extraLevel = c(710,720))
+matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 8,extraLevel = c(1300))
 points(.1,.1,pch=4,cex=2)
 
 mtext(side=3, line =0,paste0(panelLabs[2]), cex = pt8 , adj = 0)
@@ -255,11 +256,11 @@ resmat = matrix(nrow=length(x),ncol=length(y))
 
 for(i in 1:length(x)){
   for(j in 1:length(y)){
-    resmat[i,j] = likSeedBagCC3(parms=c(x[i],y[j]),dat=data)
+    resmat[j,i] = likSeedBagCC3(parms=c(x[j],y[i]),dat=data)
   }
 }
 
-matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 6,extraLevel = c(1045))
+matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 8,extraLevel = c(2000))
 points(.1,.1,pch=4,cex=2)
 
 mtext(side=3, line =0,paste0(panelLabs[3]), cex = pt8 , adj = 0)
@@ -278,13 +279,13 @@ data = data.frame(data)
 
 # - ++1 year ----
 
-x = y = seq(0,1,by=0.01)
+x = y = seq(0.001,1,length.out=200)
 
 resmat = matrix(nrow=length(x),ncol=length(y))
 
 for(i in 1:length(x)){
   for(j in 1:length(y)){
-    resmat[i,j] = likSeedAddCC1(parms=c(x[i],y[j]),dat=data)
+    resmat[j,i]= likSeedAddCC1(parms=c(x[j],y[i]),dat=data)
   }
 }
 
@@ -298,17 +299,17 @@ mtext("Seed addition",cex=pt10,adj=.5,outer=FALSE,side=2,line=2.5)
 mtext(side=3, line =0,paste0(panelLabs[4]), cex = pt8 , adj = 0)
 
 # - ++2 year ----
-x = y = seq(0.06,.14,by=0.0001)
+x = y = seq(0.001,1,length.out=200)
 
 resmat = matrix(nrow=length(x),ncol=length(y))
 
 for(i in 1:length(x)){
   for(j in 1:length(y)){
-    resmat[i,j] = likSeedAddCC2(parms=c(x[i],y[j]),dat=data)
+    resmat[j,i] = likSeedAddCC2(parms=c(x[j],y[i]),dat=data)
   }
 }
 
-matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 6,extraLevel = c(720,800,2000,20000))
+matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 6,extraLevel = c(550,700,800,2000,20000))
 points(.1,.1,pch=4,cex=2)
 
 mtext(expression(p[g]),side=1,line=1.5,cex=pt9)
@@ -316,17 +317,17 @@ mtext(side=3, line =0,paste0(panelLabs[5]), cex = pt8 , adj = 0)
 
 # - ++3 year ----
 
-x = y = seq(.06,.14,by=0.0001)
+x = y = seq(0.001,1,length.out=200)
 
 resmat = matrix(nrow=length(x),ncol=length(y))
 
 for(i in 1:length(x)){
   for(j in 1:length(y)){
-    resmat[i,j] = likSeedAddCC3(parms=c(x[i],y[j]),dat=data)
+    resmat[j,i] = likSeedAddCC3(parms=c(x[j],y[i]),dat=data)
   }
 }
 
-matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 3,extraLevel = c(1060,1100,2000,20000,50000))
+matrix.image(resmat,x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 3,extraLevel = c(800,1000,2000,10000,20000))
 points(.1,.1,pch=4,cex=2)
 
 mtext(expression(p[g]),side=1,line=1.5,cex=pt9)

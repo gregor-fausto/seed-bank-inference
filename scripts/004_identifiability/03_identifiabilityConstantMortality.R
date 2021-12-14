@@ -230,7 +230,7 @@ for(i in 1:3){
   post.bags = params.Np.bags.all[[i]][[1]]
   
   plot(post.bags[,2],post.bags[,1],pch=16,cex=.5,
-       ylab="",xlab="",xlim=c(.097,.105),ylim=c(.097,.105),
+       ylab="",xlab="",xlim=c(0.08,.12),ylim=c(0.08,.12),
        cex.axis=pt8)
   
   if(i==1){mtext(expression(p[m]),side=2,line=1.25,cex=pt9);
@@ -256,9 +256,10 @@ for(i in 1:3){
   post.add = params.Np.add.all[[i]][[1]]
   
   if(i!=1){plot(post.add[,2],post.add[,1],pch=21,cex=.5,xlab="",ylab="",
-                xlim=c(.06,.14),ylim=c(.06,.14),
+                xlim=c(0,.25),ylim=c(0,.25),
                 cex.axis=pt8)} else {
-    plot(post.add[,2],post.add[,1],pch=21,cex=.5,xlab="",ylab="",cex.axis=pt8)
+    plot(post.add[,2],post.add[,1],pch=21,cex=.5,xlab="",ylab="",cex.axis=pt8,
+         xlim=c(0,1),ylim=c(0,1))
   }
    mtext(expression(p[g]),side=1,line=1.5,cex=pt9)
   if(i==1){mtext(expression(p[m]),side=2,line=1.5,cex=pt9);

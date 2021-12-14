@@ -117,7 +117,7 @@ likSeedBagCC1 = function(parms, dat){
   
   index=(1:length(t))[t==1]
   prob = (1-p.m)
-  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob, log=TRUE))
   return(tmp)
 }
 
@@ -133,11 +133,11 @@ likSeedBagCC2 = function(parms, dat){
   
   index=(1:length(t))[t==1]
   prob = (1-p.m1)
-  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob, log=TRUE))
   
   index=(1:length(t))[t==2]
   prob = (1-p.m2)*(1-p.g)*(1-p.m1)
-  tmp2 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
+  tmp2 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob, log=TRUE))
   
   tmp = tmp+tmp2
   return(tmp)
@@ -190,38 +190,6 @@ pt8 = 8/12
 pt7 = 7/12
 pt6 = 6/12
 
-
-# - ++1 year ----
-
-# x = y = seq(0.08,.12,by=0.001)
-# 
-# resmat = matrix(nrow=length(x),ncol=length(y))
-# 
-# for(i in 1:length(x)){
-#   for(j in 1:length(y)){
-#     resmat[i,j] = likSeedBagCC1(parms=c(x[i],y[j]),dat=data)
-#   }
-# }
-# 
-# min(resmat)
-# 
-# prof_1 = apply(-resmat,1,max)
-# prof_2 = apply(-resmat,2,max)
-# 
-# plot(x,prof_1,type='l')
-# plot(y,prof_2,type='l')
-# 
-# 
-# matrix.image(t(resmat),x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 8,extraLevel = c(360,370))
-# # contour(x, y, resmat,nlevels=15)
-# # contour(x, y, resmat,levels=c(seq(360,370,by=2),seq(370,390,by=10)),add=TRUE)
-# points(.1,.1,pch=4,cex=2)
-# 
-# mtext(expression(p[m]),side=2,line=1.25,cex=pt9);
-# mtext("Seed bag burial",cex=pt10,adj=.5,outer=FALSE,side=2,line=2.25)
-# 
-# mtext(paste("# observation times = ",1),cex=pt10,adj=.5)
-
 # - ++2 years ----
 
 panelLabs =  c("G.","H.","I.","J.","K.","L.")
@@ -232,10 +200,11 @@ tiff(filename=paste0("products/figures/identifiability-joint-variable-likelihood
 par(mfrow=c(2,3),mar=c(1.5,1.5,1,.5),oma=c(1,2,0,0)+.1,mgp=c(3,.45,0))
 
 
-x = y = z = seq(0,.2,by=0.001)
+x = y = z = seq(0.001,.2,by=0.001)
 
 resmat = array(dim=c(length(x),length(y),length(z)))
 
+# seed bag burial
 for(i in 1:length(x)){
   for(j in 1:length(y)){
     for(k in 1:length(z)){
@@ -265,16 +234,8 @@ mtext(side=3, line =0,paste0(panelLabs[2]), cex = pt8 , adj = 0)
 plot(y,prof_1,type='l',ylab="",xlab="",cex.axis=pt8);abline(v=0.1,lty=3)
 mtext(side=3, line =0,paste0(panelLabs[3]), cex = pt8 , adj = 0)
 
-# 
-# min(resmat)
-# matrix.image(t(resmat[,,40]),x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 6,extraLevel = c(710,720))
-# #contour(x, y, resmat,nlevels=15)
-# #contour(x, y, resmat,levels=c(seq(700,714,by=2),seq(720,780,by=20)),add=TRUE)
-# points(.1,.1,pch=4,cex=2)
-
-
-# 2 years
-x = y = z = seq(0,1,by=0.01)
+# 2 years: seed addition
+x = y = z = seq(0.001,.999,by=0.01)
 
 resmat = array(dim=c(length(x),length(y),length(z)))
 
@@ -311,112 +272,3 @@ mtext(side=3, line =0,paste0(panelLabs[6]), cex = pt8 , adj = 0)
 mtext(expression(p[g]),side=1,line=1.4,cex=pt9);
 
 dev.off()
-
-# - +3 year ----
-# 
-# resmat = matrix(nrow=length(x),ncol=length(y))
-# 
-# for(i in 1:length(x)){
-#   for(j in 1:length(y)){
-#     resmat[i,j] = likSeedBagCC3(parms=c(x[i],y[j]),dat=data)
-#   }
-# }
-# 
-# min(resmat)
-# matrix.image(t(resmat),x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 6,extraLevel = c(1045))
-# #contour(x, y, resmat,nlevels=15)
-# #contour(x, y, resmat,levels=c(seq(1045,1060,by=5),seq(1070,1090,by=10)),add=TRUE)
-# points(.1,.1,pch=4,cex=2)
-# 
-# mtext(paste("# observation times = ",3),cex=pt10,adj=.5)
-
-
-# - +Seed addition experiment ----
-subset <- dataFull$t_obs<=3
-data <- cbind(dataFull$y.s_obs[subset],
-              dataFull$y.g_obs[subset],
-              dataFull$n.g_obs[subset],
-              dataFull$n.s_obs[subset],
-              dataFull$t_obs[subset])
-colnames(data) = c("y.s_obs","y.g_obs","n.g_obs","n.s_obs","t_obs")
-data = data.frame(data)
-
-
-x = y = seq(0,.1,by=0.01)
-
-resmat = matrix(nrow=length(x),ncol=length(y))
-
-for(i in 1:length(x)){
-  for(j in 1:length(y)){
-    resmat[i,j] = likSeedAddCC1(parms=c(x[i],y[j]),dat=data)
-  }
-}
-
-prof_1 = apply(-resmat,1,max)
-prof_2 = apply(-resmat,2,max)
-
-plot(x,prof_1,type='l')
-plot(y,prof_2,type='l')
-
-min(resmat)
-matrix.image(t(resmat),x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 6,extraLevel = c(400,2000,20000))
-#contour(x, y, resmat,levels=c(380,500,1000,5000,20000))
-points(.1,.1,pch=4,cex=2)
-
-mtext(expression(p[g]),side=1,line=1.5,cex=pt9)
-mtext(expression(p[m]),side=2,line=1.5,cex=pt9);
-mtext("Seed addition",cex=pt10,adj=.5,outer=FALSE,side=2,line=2.5)
-
-# 2 years
-x = y = z = seq(0,1,by=0.01)
-
-resmat = array(dim=c(length(x),length(y),length(z)))
-
-for(i in 1:length(x)){
-  for(j in 1:length(y)){
-    for(k in 1:length(z)){
-      resmat[i,j,k] = likSeedAddCC2(parms=c(x[i],y[j],z[k]),dat=data)
-    }
-  }
-}
-
-
-prof_1 = apply(-resmat,1,max)
-prof_2 = apply(-resmat,2,max)
-prof_3 = apply(-resmat,3,max)
-
-plot(x,prof_1,type='l')
-plot(y,prof_2,type='l')
-plot(y,prof_3,type='l')
-
-min(resmat)
-matrix.image(t(resmat),x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 6,extraLevel = c(720,800,2000,20000))
-#contour(x, y, resmat)
-#contour(x,y,resmat,add=TRUE,levels=c(750,900,2000,3000,5000),col='red')
-points(.1,.1,pch=4,cex=2)
-
-mtext(expression(p[g]),side=1,line=1.5,cex=pt9)
-
-
-x = y = seq(.06,.14,by=0.001)
-
-resmat = matrix(nrow=length(x),ncol=length(y))
-
-for(i in 1:length(x)){
-  for(j in 1:length(y)){
-    resmat[i,j] = likSeedAddCC3(parms=c(x[i],y[j]),dat=data)
-  }
-}
-
-min(resmat)
-matrix.image(t(resmat),x=x,y=y,do.contour=TRUE,bw=TRUE, nl = 3,extraLevel = c(1060,1100,2000,20000,50000))
-#contour(x, y, resmat,xlim=c(0,.2),ylim=c(0,.2))
-#contour(x,y,resmat,add=TRUE,levels=c(1200,1500,2000,3000,5000),col='red')
-points(.1,.1,pch=4,cex=2)
-mtext(expression(p[g]),side=1,line=1.5,cex=pt9)
-
-dev.off()
-# - +2 year ----
-
-# - +Seed bag burial experiment ----
-
