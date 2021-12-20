@@ -165,7 +165,7 @@ pdf("products/figures/figure-meta-4.pdf",width=6,height=6)
 par(mfcol=c(1,1))
 plot(dfBag$repNumber*dfBag$seedNumber,dfBag$observationNumber,
      pch=16,type='n',xlim=c(0,9000),ylim=c(0,20),
-     xlab="Total number of seeds per observation (bags times seeds/bag)",
+     xlab="Total number of seeds per observation",
      ylab="Number of experimental observations",cex.axis=pt12,cex.lab=pt12)
 points(dfAddition$repNumber*dfAddition$seedNumber,dfAddition$observationNumber,pch=21,bg='white',col='orange',cex=1.5)
 points(dfBag$repNumber*dfBag$seedNumber,dfBag$observationNumber,pch=21,col='black',cex=1)
