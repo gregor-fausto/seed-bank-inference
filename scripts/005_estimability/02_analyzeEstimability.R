@@ -217,7 +217,7 @@ for(k in 1:2){
   tiff(filename=paste0("products/figures/summary-",focalParam,"-supplement.tif"),
        height=3.5,width=6,units="in",res=300,compression="lzw",pointsize=12)
   
-  if(focalParam=="p.m"){panelLabs =  c("A.","B.","C.","D.")} else {panelLabs = c("I.", "J.", "K.", "L.")}
+  panelLabs =  c("A.","B.","C.","D.","I.", "J.", "K.", "L.")
   
   par(mfrow = c(2,4),
       oma = c(2.5,4,1.1,0) + 0.1,
@@ -248,7 +248,7 @@ for(k in 1:2){
            pch=ifelse(df.tmp$experiment=="bags",21,21),
            bg=ifelse(df.tmp$experiment=="bags","black","white"))
     
-    mtext(side=3, line =0,paste0(panelLabs[i]), cex = pt8 , adj = 0)
+    mtext(side=3, line =0,paste0(panelLabs[(1:4)[i]]), cex = pt8 , adj = 0)
     if(i==1){ mtext(side=3, line =0,expression(paste(p[m]==0.1, ",  ",  p[g]==0.1)), cex = pt8 , adj = 0.5) }
     if(i==2){ mtext(side=3, line =0,expression(paste(p[m]==0.1, ",  ",  p[g]==0.5)), cex = pt8 , adj = 0.5) }
     if(i==3){ mtext(side=3, line =0,expression(paste(p[m]==0.5, ",  ",  p[g]==0.1)), cex = pt8 , adj = 0.5) }
@@ -293,6 +293,7 @@ for(k in 1:2){
     
   }
   
+  mtext(side=3, line =0,paste0(panelLabs[(5:8)[i]]), cex = pt8 , adj = 0)
   mtext(side=1, line = 1.25, "Number of samples (bags or plots)", cex = pt9,  outer = TRUE)
   if(focalParam=="p.m"){
     mtext(side=3, line =0, expression(Probability~of~mortality~p[m]), adj=-.125, cex = pt10,  outer = TRUE)
