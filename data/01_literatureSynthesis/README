@@ -1,0 +1,19 @@
+README for table-literature-survey
+
+The CSV file table-literature-survey.csv contains information on seed bag burial and seed addition experiments. Columns are:
+
+pubDate: year of publication
+firstAuthor: last name of first firstAuthor
+genus: genus name of the species being studied; if NA, the authors conducted experiments with more than one species
+species: species name of species being studied; if NA, the authors conducted experiments with more than one species
+experiment: identifies study as a seed bag burial or seed addition experiment
+repNumber: number of experimental replicates per observation; for example, if 10 seed bags were unearthed per observation, repNumber=10; if 10 plots are censused per observation, repNumber=10
+seedNumber: number of seeds added to each seed bag or to each plot
+totalMonths: length of the experiment in months, from when seeds were buried in bags or plots until the last bag was unearthed or last seedling census
+observationNumber: for seed bag burial experiments, we tallied the number of observations as the number of times that seed bags were unearthed for counts of seeds and/or seedlings; for seed addition experiments, we tallied the number of observations as the number of times that seed addition plots were censused for seedlings.
+observationType: notes on what was counted or censused in the survey, as described in the study
+parameter: note on which parameter was estimated using the seed bag burial or seed addition experiments
+germination: note on whether germination was estimated as constant or age-dependent; values are either constant, age, unestimated or NA; unestimated if the authors did not use the experiment for the estimate, NA if I was unable to determine how they obtained the estimate
+mortality: note on whether seed mortality was estimated as constant or age-dependent; values are either constant or age, unestimated or NA; unestimated if the authors did not use the experiment for the estimate, NA if I was unable to determine how they obtained the estimate
+notes: additional notes from when I surveyed the literature
+doi: DOI for the study, when available; I entered NA for dissertations when I was unable to find an associated DOI
