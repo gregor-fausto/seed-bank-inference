@@ -1,5 +1,4 @@
 # seed-bank-inference
-Scripts associated with paper on seed bank inference
 
 ### Statistical inference for seed mortality and germination with seed bank experiments
 
@@ -8,7 +7,7 @@ Scripts associated with paper on seed bank inference
   - Gregor-Fausto Siegmund, Cornell University, <gs589@cornell.edu>
   - Monica A. Geber, Cornell University
 
-  This repository contains the analysis for our project on statistical models for seed mortality and germination.
+  This repository contains the scripts for our project on statistical models for seed mortality and germination.
 
 -----
 
