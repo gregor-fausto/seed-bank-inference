@@ -9,6 +9,8 @@
 
   This repository contains the scripts for our project on statistical models for seed mortality and germination.
 
+  [![DOI](https://zenodo.org/badge/436662955.svg)](https://zenodo.org/badge/latestdoi/436662955)
+
 -----
 
 ### Abstract
