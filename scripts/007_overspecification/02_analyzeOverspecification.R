@@ -114,9 +114,6 @@ pm.addition = list()
 
 # - For loop to evaluate models ----
 
-# index to get files from directory
-index.vec=rep(1:30,3)
-
 for(h in 1:length(focalParamAll)){
   
   focalParam = focalParamAll[h]
@@ -126,7 +123,7 @@ for(h in 1:length(focalParamAll)){
     # - +Extract posteriors ----
     
     # get current directory
-    tmp = tempDirs[index.vec[i]]
+    tmp = tempDirs[i]
     parm.table.tmp = parm.table[i,]
     
     # get filenames in directories
