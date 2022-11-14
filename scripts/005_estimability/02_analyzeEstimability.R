@@ -3,6 +3,8 @@
 # Study parameter estimability in non-parametric models
 # this is for a constant mortality constant germination model
 # with different number of time points
+# Script produces panels for Figure 2, main text
+# Script produces panels for Figure S8, main text
 ####
 ####
 

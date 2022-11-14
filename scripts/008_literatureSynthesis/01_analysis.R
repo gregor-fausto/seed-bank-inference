@@ -1,6 +1,7 @@
 ####
 ####
 # Analyze literature synthesis for supplement
+# Script produces panels for Figure S1
 ####
 ####
 

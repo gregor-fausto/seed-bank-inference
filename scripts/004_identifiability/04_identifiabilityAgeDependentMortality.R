@@ -3,6 +3,7 @@
 # Study parameter identifiability in non-parametric models
 # this is for a constant mortality constant germination model
 # with different number of time points
+# Script produces panels for Figure S6G-L, S7C-D
 ####
 ####
 

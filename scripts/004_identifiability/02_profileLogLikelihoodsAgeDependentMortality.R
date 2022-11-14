@@ -3,6 +3,7 @@
 # Study parameter identifiability in non-parametric models
 # this is for a constant mortality constant germination model
 # with different number of time points
+# Script produces panels for Figure S5G-L
 ####
 ####
 
@@ -67,15 +68,15 @@ likSeedAddCC2 = function(parms, dat){
   n = dat$n.s_obs;
   y = dat$y.g_obs;
   t = dat$t_obs
-  
+
   index=(1:length(t))[t==1]
   prob = p.g*(1-p.m1)
   tmp = -sum(dbinom(y[index], n[index], prob, log=TRUE))
-  
+
   index=(1:length(t))[t==2]
   prob = p.g*(1-p.m2)*(1-p.g)*(1-p.m1)
   tmp2 = -sum(dbinom(y[index], n[index], prob, log=TRUE))
-  
+
   tmp = tmp+tmp2
   return(tmp)
 }
@@ -87,19 +88,19 @@ likSeedAddCC2 = function(parms, dat){
 #   n = dat$n.s_obs;
 #   y = dat$y.g_obs;
 #   t = dat$t_obs
-#   
+#
 #   index=(1:length(t))[t==1]
 #   prob = p.g*(1-p.m)
 #   tmp = -sum(dbinom(y[index], n[index], prob, log=TRUE))
-#   
+#
 #   index=(1:length(t))[t==2]
 #   prob = p.g*(1-p.m)*(1-p.g)*(1-p.m)
 #   tmp2 = -sum(dbinom(y[index], n[index], prob, log=TRUE))
-#   
+#
 #   index=(1:length(t))[t==3]
 #   prob = p.g*(1-p.m)*(1-p.g)*(1-p.m)*(1-p.g)*(1-p.m)
 #   tmp3 = -sum(dbinom(y[index], n[index], prob, log=TRUE))
-#   
+#
 #   tmp = tmp+tmp2+tmp3
 #   return(tmp)
 # }
@@ -114,7 +115,7 @@ likSeedBagCC1 = function(parms, dat){
   n.g = dat$n.g_obs;
   y.g = dat$y.g_obs
   t = dat$t_obs
-  
+
   index=(1:length(t))[t==1]
   prob = (1-p.m)
   tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob, log=TRUE))
@@ -130,20 +131,20 @@ likSeedBagCC2 = function(parms, dat){
   n.g = dat$n.g_obs;
   y.g = dat$y.g_obs
   t = dat$t_obs
-  
+
   index=(1:length(t))[t==1]
   prob = (1-p.m1)
   tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob, log=TRUE))
-  
+
   index=(1:length(t))[t==2]
   prob = (1-p.m2)*(1-p.g)*(1-p.m1)
   tmp2 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob, log=TRUE))
-  
+
   tmp = tmp+tmp2
   return(tmp)
 }
 
-# 
+#
 # likSeedBagCC3 = function(parms, dat){
 #   p.g = parms[1];
 #   p.m = parms[2];
@@ -152,19 +153,19 @@ likSeedBagCC2 = function(parms, dat){
 #   n.g = dat$n.g_obs;
 #   y.g = dat$y.g_obs
 #   t = dat$t_obs
-#   
+#
 #   index=(1:length(t))[t==1]
 #   prob = (1-p.m)
 #   tmp = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
-#   
+#
 #   index=(1:length(t))[t==2]
 #   prob = (1-p.m)*(1-p.g)*(1-p.m)
 #   tmp2 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
-#   
+#
 #   index=(1:length(t))[t==3]
 #   prob = (1-p.m)*(1-p.g)*(1-p.m)*(1-p.g)*(1-p.m)
 #   tmp3 = -sum(dbinom(y.g[index], n.g[index], p.g, log=TRUE)+dbinom(y[index], n[index], prob))
-#   
+#
 #   tmp = tmp+tmp2+tmp3
 #   return(tmp)
 # }
