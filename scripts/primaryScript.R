@@ -31,6 +31,7 @@ tmp <- paste0(primaryDirectory,"outputs/002_statisticalModelFitting")
 dir.create(paste0(tmp,"/01_identifiability"))
 dir.create(paste0(tmp,"/02_estimability"))
 dir.create(paste0(tmp,"/03_misspecification"))
+dir.create(paste0(tmp,"/04_overspecification"))
 
 dir.create(paste0(primaryDirectory,"products"))
 dir.create(paste0(primaryDirectory,"products/figures"))
@@ -46,6 +47,7 @@ source("scripts/002_simulateObservations/05_simulateSeedBurialMisspecification.R
 source("scripts/003_statisticalModelFitting/03_fitModelsIdentifiability.R")
 source("scripts/003_statisticalModelFitting/04_fitModelsEstimability.R")
 source("scripts/003_statisticalModelFitting/05_fitModelsMisspecification.R")
+source("scripts/003_statisticalModelFitting/06_fitModelsOverspecification.R")
 
 # - Analyze consequences of identifiability ----
 
@@ -58,16 +60,20 @@ source("scripts/004_identifiability/04_identifiabilityAgeDependentMortality.R")
 
 source("scripts/005_estimability/02_analyzeEstimability.R")
 
-# - Analyze consequences of misspecified model ----
+# - Analyze consequences of misspecified model (C/C model fit to A/C data) ----
 
-source("scripts/006_misspecification/01_analyzeMisspecification.R")
+source("scripts/006_misspecification/02_analyzeMisspecificationMultipleGerminationValues.R")
+
+# - Analyze consequences of misspecified model (A/C model fit to C/C data) ----
+
+source("scripts/007_overspecification/02_analyzeOverspecification.R")
 
 # - Run analysis for literature synthesis ----
 
-source("scripts/007_literatureSynthesis/01_analysis.R")
+source("scripts/008_literatureSynthesis/01_analysis.R")
 
 # - Produce additional figures and diagrams ----
 
-source("scripts/008_figuresDiagrams/01_conceptualFigure.R")
-source("scripts/008_figuresDiagrams/02_constantMortalityConstantGermination.R")
-source("scripts/008_figuresDiagrams/03_ageDependentMortalityConstantGermination.R")
+source("scripts/009_figuresDiagrams/01_conceptualFigure.R")
+source("scripts/009_figuresDiagrams/02_constantMortalityConstantGermination.R")
+source("scripts/009_figuresDiagrams/03_ageDependentMortalityConstantGermination.R")
