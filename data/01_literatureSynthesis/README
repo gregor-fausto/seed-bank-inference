@@ -18,6 +18,6 @@ noteContinuousParameter: if 'isEstimationDiscrete' was no, notes whether germina
 isMortalityGerminationSeparateInModel: binary variable noting whether or not the publication included mortality/survival and germination separately in the population model 
 notesOnEstimation: notes how authors in the publication estimated parameters
 observationType: notes on what was counted or censused in the survey, as described in the study (note: not used in analysis for paper)
-parameter: note on which parameter was estimated using the seed bag burial or seed addition experiments (note: not used in analysis for paper)
+parameter: note on which parameter was estimated using the seed bag burial or seed addition experiments (note: not used in analysis for paper) 
 notes: additional notes from when I surveyed the literature
 doi: DOI for the study, when available; I entered NA for dissertations when I was unable to find an associated DOI
