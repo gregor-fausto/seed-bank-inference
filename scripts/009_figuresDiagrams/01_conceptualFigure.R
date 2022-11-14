@@ -1,6 +1,7 @@
 ####
 ####
 # Script to create diagram of seed bag burial and addition experiments
+# Main text Figure 1A and B
 ####
 ####
 
@@ -15,7 +16,7 @@ pt6 = 6/12
 
 # - Seed bag burial experiment ----
 
-tiff(filename="~/Dropbox/chapter-4/analysis/products/figures/seed-bag-trials.tif",
+tiff(filename="products/figures/seed-bag-trials.tif",
      height=1800,width=1600,units="px",res=800,compression="lzw",pointsize=12)
 
 par(mfrow=c(1,1),mar=c(0,0,0,0),mgp=c(0,0.25,0),
@@ -88,7 +89,7 @@ dev.off()
 
 # - Seed addition experiment ----
 
-tiff(filename="~/Dropbox/chapter-4/analysis/products/figures/seed-addition-trials.tif",
+tiff(filename="products/figures/seed-addition-trials.tif",
      height=1800,width=1600,units="px",res=800,compression="lzw",pointsize=12)
 
 par(mfrow=c(1,1),mar=c(0,0,0,0),mgp=c(0,0.25,0),

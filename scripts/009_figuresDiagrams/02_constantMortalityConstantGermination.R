@@ -1,3 +1,10 @@
+####
+####
+# Script to produce Figure S2
+# Explanation of time-to-event model with unstructured seed bank
+####
+####
+
 
 # -------------------------------------------------------------------
 # Function to obtain hazards based on annual probability of germination and mortality
@@ -120,7 +127,7 @@ plot.colors = c("#1b9e77","#d95f02","#7570b3")
 plot.shapes = c(19,21,4)
 plot.lines = c("solid","dashed","dotted")
 
-pdf("~/Dropbox/chapter-4/analysis/products/figures/figure-2-constant.pdf",height=6,width=4)
+pdf("products/figures/figure-unstructured-seed-bank.pdf",height=6,width=4)
 par(mfrow=c(2,1))
 par(mar=c(1,4,0,2),
     oma=c(4,0,2,0))
