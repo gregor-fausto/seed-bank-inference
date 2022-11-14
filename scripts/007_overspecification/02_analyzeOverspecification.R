@@ -437,7 +437,4 @@ for(i in 1:dim(panels.pm)[1]){
   
 }
 
-
-
 dev.off()
-
