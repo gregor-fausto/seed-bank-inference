@@ -1,6 +1,7 @@
 ####
 ####
 # Compile and organize results of identifiability analysis
+# these results will be the basis for Table 2
 ####
 ####
 
@@ -9,9 +10,9 @@ library(tidyverse)
 
 # - Read data ----
 # - +file names ----
-fileNames <- read.table("~/Dropbox/chapter-4/symbolicMethod/001_identifiabilityAnalysis/03_output/filenames.txt",sep=";")
+fileNames <- read.table("scripts/001_identifiabilityAnalysis/03_output/filenames.txt",sep=";")
 # - +model deficiency ----
-deficiency <- read.table("~/Dropbox/chapter-4/symbolicMethod/001_identifiabilityAnalysis/03_output/symbolicOutput.txt",sep=";")
+deficiency <- read.table("scripts/001_identifiabilityAnalysis/03_output/symbolicOutput.txt",sep=";")
 
 # - Extract variables from file names ----
 
@@ -20,10 +21,16 @@ fileNames <- as.character(fileNames[,1])
 fileNamesSplit<-strsplit(fileNames,"/")
 
 # - +experiment ----
-experiment <-unlist(lapply(fileNamesSplit, `[[`, 8))
+# note that the goal here is to extract either 'seed addition' or 'seed bag burial' 
+# may need to change the index from 10 to whatever matches that variable
+# if the file name changes
+experiment <-unlist(lapply(fileNamesSplit, `[[`, 10))
 
 # - +model structure ----
-model <-unlist(lapply(fileNamesSplit, `[[`, 9))
+# may need to change the index from 11 
+# if the file name changes
+# you want to recover the variable that has for eg. 'gc-ma-1'
+model <-unlist(lapply(fileNamesSplit, `[[`, 11))
 
 # - Extract model deficiency ----
 deficiency <- deficiency[,1]

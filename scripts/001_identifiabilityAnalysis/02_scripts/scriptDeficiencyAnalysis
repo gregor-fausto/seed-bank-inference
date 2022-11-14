@@ -23,8 +23,9 @@ def: d-r;
 file_output_append: true;
 
 /* write deficiency to output file */
-stringout("~/Dropbox/chapter-4/analysis/001_identifiabilityAnalysis/03_output/symbolicOutput.txt",def);
-stringout("~/Dropbox/chapter-4/analysis/001_identifiabilityAnalysis/03_output/filenames.txt",files[i]);
+/* note you need to update the directory to write out to */
+stringout("seed-bank-inference/scripts/001_identifiabilityAnalysis/03_output/symbolicOutput.txt",def);
+stringout("seed-bank-inference/scripts/001_identifiabilityAnalysis/03_output/filenames.txt",files[i]);
 
 /* reset global variable to append to files = false */
 file_output_append: false;
