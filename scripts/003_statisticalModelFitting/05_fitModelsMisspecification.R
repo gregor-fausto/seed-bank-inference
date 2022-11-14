@@ -52,23 +52,23 @@ for(i in 1:length(index)){
 identifiabilityBinary = FALSE
 
 # - +number of replicate simulations ----
-n.replicate = 10
+n.replicate = 250
 
 simulatedData = paste0("replicate-",1:n.replicate,".RDS")
 
 # fit non-parametric seed bag burial and seed addition experiments
 for(i in 1:length(index)){
-  
+
   simulatedDataObj <- strsplit(fileNames[index[i]],"/")[[1]][4]
-  
+
   tmpPosteriorDirectory <- paste0(outPosteriorSamplesDirectory,simulatedDataObj,"/")
- 
+
    for(j in 1:n.replicate){
-     
+
      # if replicate exists go on
     if(file.exists(paste0(tmpPosteriorDirectory,"posteriors-NpCmCg/seedBagBurial/replicate-",j,".RDS"))) next
       simulation.data  <-  readRDS(paste0(paste0(fileNames[index[i]],"/"),simulatedData[j]))
       source(paste0(scriptDirectory,"01_fitNpCmCg.R"))
-    
+
   }
 }
