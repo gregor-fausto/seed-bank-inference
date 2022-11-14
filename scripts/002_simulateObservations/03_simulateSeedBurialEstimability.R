@@ -35,7 +35,7 @@ parameterTable=rbind(parameterTable)
 n=dim(parameterTable)[1]
 
 # - + Set number of replicate simulated datasets ----
-n.replicate = 10
+n.replicate = 250
 
 # - +for each row of the parameter table ----
 for(h in 1:n){
