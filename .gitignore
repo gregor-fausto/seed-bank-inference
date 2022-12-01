@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 .Rapp.history
+
+# files from OS
+.DS_Store
